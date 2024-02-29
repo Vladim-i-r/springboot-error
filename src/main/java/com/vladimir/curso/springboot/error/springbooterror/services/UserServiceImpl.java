@@ -30,16 +30,16 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Optional<User> findByiD(Long id) {
-        User user = null;
-        for (User u : users) {
-            if (u.getId().equals(id)){
-                user = u;
-                break;
-            }
-        }
-
+        return users.stream().filter(usr -> usr.getId().equals(id)).findFirst();
+        // User user = null;
+        // for (User u : users) {
+        //     if (u.getId().equals(id)){
+        //         user = u;
+        //         break;
+        //     }
+        // }
+        //return Optional.ofNullable(user);                                      //* En caso que no encuentre el objeto */
         
-        return Optional.ofNullable(user);                                                   //* En caso que no encuentre el objeto */
     }
 
 
